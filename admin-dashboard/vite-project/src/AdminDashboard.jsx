@@ -13,7 +13,7 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
 
   // Replace this with your deployed backend URL from Render
-  const BACKEND_URL = "https://charactered-accountant-backend.onrender.com";
+  const BACKEND_URL = "https://charactered-accountant-b.onrender.com";
 
   useEffect(() => {
     fetchData(selected.api);

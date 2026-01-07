@@ -5,7 +5,7 @@ function InquiriesPage() {
   const [loading, setLoading] = useState(true);
 
   // ✅ Replace with your deployed backend URL
-  const BACKEND_URL = "https://charactered-accountant-backend.onrender.com";
+  const BACKEND_URL = "https://charactered-accountant-b.onrender.com";
 
   useEffect(() => {
     fetchInquiries();
