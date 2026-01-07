@@ -17,12 +17,17 @@ app.use("/api/contact", require("./Routes/contactRoutes"));
 app.use("/api/resource", require("./Routes/resourceRoutes"));
 app.use("/api/jobapplication", require("./Routes/jobApplicationRoutes"));
 app.use("/api/inquiries", require("./Routes/inquiryRoutes"));
+
+// ✅ ROOT ROUTE (ADD THIS)
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully 🚀");
+});
+
 // MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
