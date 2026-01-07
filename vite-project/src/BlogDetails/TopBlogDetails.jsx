@@ -1,13 +1,15 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 import TopBlog from '../Blog/TopBlog'
-import BlogPost from '../Blog/BlogPost'
+import Footer from '../FrontPage1/Footer'
 
 function TopBlogDetails() {
+  const navigate = useNavigate(); // 👈 hook
   return (
     <>
     <TopBlog/>
     <div className='h-110 w-full bg-[#F6EFF9] pl-30 pt-15 pb-10'>
-        <div><h5 className='text-[#667085]'>BACK</h5></div>
+        <div ><h5  onClick={() => navigate("/")}  className='text-[#667085] cursor-pointer'>BACK</h5></div>
         <div className='flex gap-40'>
         <div className='leftside pt-18'>
             <h1 className='text-[#010101] text-4xl font-semibold pt-4'>Free Marketing Plan<br/> Template</h1>
@@ -153,8 +155,9 @@ function TopBlogDetails() {
       </div>
 
     </div>   
-    </div>
     
+    </div>
+    <Footer/>
     </>
   )
 }

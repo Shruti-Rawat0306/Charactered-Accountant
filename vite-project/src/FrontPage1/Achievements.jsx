@@ -1,87 +1,105 @@
-import React from 'react'
+import React from "react";
 
 function Achievements() {
   return (
     <>
-     {/**Our Achievers */}
-      <div className="min-h-screen w-full bg-[#FAFAFA] flex gap-38 pt-18">
-        {/* Left Side */}
-        <div className="ml-10">
-          <h1 className="text-[#04137D] text-4xl font-bold">
-            Our Achievements
-          </h1>
-          <p className="font-normal text-[#3F314C] pt-4">
-            From industry recognitions to community milestones — <br />
-            every award and event reminds us of our dedication to <br />
-            quality, innovation, and impact.
-          </p>
-        </div>
+      {/* Achievements Section */}
+      <div className="w-full bg-[#FAFAFA] py-12 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
 
-        {/* Right Side (All Cards) */}
-        <div className="rightside flex flex-col gap-6 pb-20">
-          {/* Card 1 */}
-          <div className="flex gap-5 items-start">
-            <img
-              className="w-100 h-60"
-              src="./dd8dfa18466e2a26fd5920350a7f6dd4fdadbb99 (1).png"
-              alt=""
-            />
-            <div className="py-20">
-              <h3 className="text-[#101828] font-semibold">
-                Business Growth Summit
-              </h3>
-              <p className="text-[#484C55] font-normal text-sm">
-                The rise of RESTful APIs has been met
-                <br />
-                by a rise in tools for creating, testing
-              </p>
-              <h3 className="text-[#6941C6] text-sm">June 2023</h3>
-            </div>
+          {/* Left Side */}
+          <div className="lg:w-1/3">
+            <h1 className="text-[#04137D] text-2xl sm:text-3xl md:text-4xl font-bold">
+              Our Achievements
+            </h1>
+
+            <p className="text-[#3F314C] mt-4 text-sm sm:text-base">
+              From industry recognitions to community milestones —
+              every award and event reminds us of our dedication to
+              quality, innovation, and impact.
+            </p>
           </div>
 
-          <div className="flex gap-5 items-start">
-            <img
-              className="w-100 h-60"
-              src="./dd8dfa18466e2a26fd5920350a7f6dd4fdadbb99 (1).png"
-              alt=""
-            />
-            <div className="py-20">
-              <h3 className="text-[#101828] font-semibold">
-                Business Growth Summit
-              </h3>
-              <p className="text-[#484C55] font-normal text-sm">
-                The rise of RESTful APIs has been met
-                <br />
-                by a rise in tools for creating, testing
-              </p>
-              <h3 className="text-[#6941C6] text-sm">Aug 2023</h3>
-            </div>
-          </div>
+          {/* Right Side */}
+          <div className="lg:w-2/3 flex flex-col gap-8">
 
-          <div className="flex gap-5 items-start">
-            <img
-              className="w-100 h-60"
-              src="./dd8dfa18466e2a26fd5920350a7f6dd4fdadbb99 (1).png"
-              alt=""
-            />
-            <div className="py-20">
-              <h3 className="text-[#101828] font-semibold">
-                Business Growth Summit
-              </h3>
-              <p className="text-[#484C55] font-normal text-sm">
-                The rise of RESTful APIs has been met
-                <br />
-                by a rise in tools for creating, testing
-              </p>
-              <h3 className="text-[#6941C6] text-sm">Oct 2023</h3>
+            {/* Card */}
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <img
+                src="./dd8dfa18466e2a26fd5920350a7f6dd4fdadbb99 (1).png"
+                alt=""
+                className="w-full sm:w-60 h-48 object-cover rounded-lg"
+              />
+
+              <div className="flex flex-col justify-center">
+                <h3 className="text-[#101828] font-semibold">
+                  Business Growth Summit
+                </h3>
+
+                <p className="text-[#484C55] text-sm mt-2">
+                  The rise of RESTful APIs has been met by a rise
+                  in tools for creating and testing.
+                </p>
+
+                <h3 className="text-[#6941C6] text-sm mt-2">
+                  June 2023
+                </h3>
+              </div>
             </div>
+
+            {/* Card */}
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <img
+                src="./dd8dfa18466e2a26fd5920350a7f6dd4fdadbb99 (1).png"
+                alt=""
+                className="w-full sm:w-60 h-48 object-cover rounded-lg"
+              />
+
+              <div className="flex flex-col justify-center">
+                <h3 className="text-[#101828] font-semibold">
+                  Business Growth Summit
+                </h3>
+
+                <p className="text-[#484C55] text-sm mt-2">
+                  The rise of RESTful APIs has been met by a rise
+                  in tools for creating and testing.
+                </p>
+
+                <h3 className="text-[#6941C6] text-sm mt-2">
+                  Aug 2023
+                </h3>
+              </div>
+            </div>
+
+            {/* Card */}
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <img
+                src="./dd8dfa18466e2a26fd5920350a7f6dd4fdadbb99 (1).png"
+                alt=""
+                className="w-full sm:w-60 h-48 object-cover rounded-lg"
+              />
+
+              <div className="flex flex-col justify-center">
+                <h3 className="text-[#101828] font-semibold">
+                  Business Growth Summit
+                </h3>
+
+                <p className="text-[#484C55] text-sm mt-2">
+                  The rise of RESTful APIs has been met by a rise
+                  in tools for creating and testing.
+                </p>
+
+                <h3 className="text-[#6941C6] text-sm mt-2">
+                  Oct 2023
+                </h3>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
-
-    
     </>
-  )
+  );
 }
 
-export default Achievements
+export default Achievements;

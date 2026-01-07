@@ -1,80 +1,124 @@
-import React from 'react'
-import CareerRole from './CareerRole'
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import CareerRole from "./CareerRole";
+import TopBlog from "../Blog/TopBlog";
 
 function CareerContent() {
-  return (
-    <>
-    <div className='min-h-screen w-full bg-[#F6EFF9]'>
-        <div className='first flex justify-around pt-10'>
-        <div className='leftside'>
-            <div>
-                <h1 className='text-[#04137D] text-3xl font-semibold pt-20'>Join Our Team</h1>
-                <p className='text-[#010101] text-m font-normal pt-4'>At UAC, we believe that great ideas come from passionate people. We're <br/>not
-                 just building products or services - we're building a culture of <br/>innovation,growth,and collaboration. If you're driven by curiosity,<br/>creativity,and impact, you'll feel right at home here.</p>
-            </div>
-         </div>
-         <div className='rightside'>
-             <img className='w-100 h-80' src="../../public/c220b565fba3f3369a85cb9bd4d04bf17c85be21 (1).jpg" alt="" />
-         </div>
-         </div>
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("All Job Category");
+  const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
-         <div className='second pt-18 pb-6'>
-               <div className='flex justify-between'>
-                    <div className='pl-25 text-[#04137D] text-3xl font-semibold'><h3>Open Roles at UAC</h3></div>        
-                    <div className='flex mr-24 pt-1'>
-                      <input className="relative w-[200px] p-1 border border-gray-300 rounded-lg shadow-sm  placeholder-gray-400" type="text" placeholder='All Job Category' />
-                      <img className='absolute pl-42 py-2' src="../../public/ri_arrow-drop-down-line.png" alt="" />
-                      </div>       
-              </div>                   
-         </div>
-             
-                <CareerRole/>
-                <CareerRole/>
-            
-        <div className="third flex mt-3 justify-center pb-30">
-      <div className='flex gap-3'>
-    <div className="w-[360px] bg-[#F6EFF9] border-2 border-[#7985DB] rounded-2xl p-6">
-     <h3 className="text-xl font-semibold text-[#010101] mb-2">Sr. Accountant</h3>
-     <p className="text-[#373636] text-sm mb-4">
-      A Front-End Engineer at UAC is responsible for
-      developing and implementing user-facing components in customized websites and web,
-      implementing user-facing components in customized websites and web implementing
-      user-facing components in customized websites and web.
-     </p>
-     <h2 className="text-[#7985DB] font-semibold cursor-pointer hover:underline">
-      View Detail
-    </h2>
-  </div>
-   <div className="w-[360px] bg-[#F6EFF9] border-2 border-[#7985DB] rounded-2xl p-6">
-     <h3 className="text-xl font-semibold text-[#010101] mb-2">Sr. Accountant</h3>
-     <p className="text-[#373636] text-sm  mb-4">
-      A Front-End Engineer at UAC is responsible for
-      developing and implementing user-facing components in customized websites and web,
-      implementing user-facing components in customized websites and web implementing
-      user-facing components in customized websites and web.
-     </p>
-     <h2 className="text-[#7985DB] font-semibold cursor-pointer hover:underline">
-      View Detail
-    </h2>
-  </div>
-   <div className="w-[360px] bg-[#F6EFF9] border-2 border-[#7985DB] rounded-2xl p-6" >
-     <h3 className="text-xl font-semibold text-[#010101] mb-2">Sr. Accountant</h3>
-     <p className="text-[#373636] text-sm mb-4">
-      A Front-End Engineer at UAC is responsible for
-      developing and implementing user-facing components in customized websites and web,
-      implementing user-facing components in customized websites and web implementing
-      user-facing components in customized websites and web.
-     </p>
-     <h2 className="text-[#7985DB] font-semibold cursor-pointer hover:underline">
-      View Detail
-    </h2>
-  </div>
-</div>
-</div>
-        
+  const options = [
+    "Frontend Development",
+    "Marketing",
+    "Design",
+    "Sales"
+  ];
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSelect = (option) => {
+    setSelected(option);
+    setIsOpen(false);
+
+    // Navigate if "Frontend Development" is selected
+    if (option === "Frontend Development") {
+      navigate("/careers/frontend");
+    }
+    // Navigate if "Marketing" is selected
+    if(option==="Marketing"){
+      navigate("/careers/marketing");
+    }
+    // Navigate if "Sales" is selected
+    if(option==="Sales"){
+      navigate("/careers/sales");
+    }
+    // Navigate if "Design" is selected
+     if(option==="Design"){
+      navigate("/careers/design");
+    }
+      
+  };
+
+  return (
+  
+    <div className="min-h-screen w-full bg-[#F6EFF9]">
+      
+      {/* Hero Section */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-10 px-6 md:px-16 lg:px-24 pt-12">
+        <div className="max-w-xl">
+          <h1 className="text-[#04137D] text-3xl md:text-4xl font-semibold mb-4">
+            Join Our Team
+          </h1>
+          <p className="text-[#010101] text-sm md:text-base leading-relaxed">
+            At UAC, we believe that great ideas come from passionate people. We're<br/>
+            not just building products or services - we're building a culture of<br/>
+            innovation, collaboration, and growth. If you're looking for a place to<br/>
+            make a real impact and grow your career, you've come to the right place.  
+          </p>
+        </div>
+
+        <img
+          src="../../public/c220b565fba3f3369a85cb9bd4d04bf17c85be21 (1).jpg"
+          alt=""
+          className="w-full max-w-md rounded-xl object-cover"
+        />
+      </div>
+
+      {/* Open Roles Header + Dropdown */}
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-6 md:px-16 lg:px-24 mt-16">
+        <h3 className="text-[#04137D] text-2xl md:text-3xl font-semibold">
+          Open Roles at UAC
+        </h3>
+
+        <div className="relative w-full md:w-56" ref={dropdownRef}>
+          <div
+            className="flex items-center justify-between p-2 border border-gray-300 rounded-lg shadow-sm cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span className="text-gray-700">{selected}</span>
+            <img
+              src="../../public/ri_arrow-drop-down-line.png"
+              alt="dropdown arrow"
+              className={`w-5 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
+          </div>
+
+          {isOpen && (
+            <ul className="absolute z-50 mt-1 w-full max-h-60 overflow-y-auto border border-gray-300 bg-white rounded-lg shadow-lg">
+              {options.map((option, index) => (
+                <li
+                  key={index}
+                  className="p-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => handleSelect(option)}
+                >
+                  {option}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+
+      {/* Job Cards */}
+      <div className="mt-12 pb-20 space-y-10 px-4 md:px-12 lg:px-10">
+        <CareerRole />
+        <CareerRole />
+        <CareerRole />
+      </div>
     </div>
-    </>
-  )
+  );
 }
 
-export default CareerContent
+export default CareerContent;
