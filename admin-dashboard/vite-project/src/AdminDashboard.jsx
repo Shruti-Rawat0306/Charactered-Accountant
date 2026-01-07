@@ -12,6 +12,9 @@ function AdminDashboard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Replace this with your deployed backend URL from Render
+  const BACKEND_URL = "https://charactered-accountant-backend.onrender.com";
+
   useEffect(() => {
     fetchData(selected.api);
   }, [selected]);
@@ -19,13 +22,14 @@ function AdminDashboard() {
   const fetchData = async (api) => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/${api}/all`);
+      const res = await fetch(`${BACKEND_URL}/api/${api}/all`);
       const json = await res.json();
       setData(json);
       setLoading(false);
     } catch (err) {
       console.error(err);
       setLoading(false);
+      alert("Failed to fetch data from backend");
     }
   };
 
@@ -33,7 +37,7 @@ function AdminDashboard() {
     if (!window.confirm("Are you sure you want to delete this entry?")) return;
 
     try {
-      await fetch(`http://localhost:5000/api/${selected.api}/${id}`, {
+      await fetch(`${BACKEND_URL}/api/${selected.api}/${id}`, {
         method: "DELETE",
       });
       setData(data.filter((item) => item._id !== id));
@@ -43,7 +47,8 @@ function AdminDashboard() {
     }
   };
 
-  if (loading) return <p style={{ padding: "20px", fontSize: "18px" }}>Loading...</p>;
+  if (loading)
+    return <p style={{ padding: "20px", fontSize: "18px" }}>Loading...</p>;
 
   return (
     <div style={{ display: "flex", minHeight: "100vh", fontFamily: "Arial, sans-serif" }}>

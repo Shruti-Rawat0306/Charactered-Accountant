@@ -4,19 +4,23 @@ function JobApplicationsPage() {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // ✅ Replace with your deployed backend URL
+  const BACKEND_URL = "https://charactered-accountant-backend.onrender.com";
+
   useEffect(() => {
     fetchApplications();
   }, []);
 
   const fetchApplications = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/jobapplication/all");
+      const res = await fetch(`${BACKEND_URL}/api/jobapplication/all`);
       const data = await res.json();
       setApplications(data);
       setLoading(false);
     } catch (err) {
       console.error(err);
       setLoading(false);
+      alert("Failed to fetch job applications from backend");
     }
   };
 
@@ -24,11 +28,11 @@ function JobApplicationsPage() {
     if (!window.confirm("Are you sure you want to delete this job application?")) return;
 
     try {
-      await fetch(`http://localhost:5000/api/jobapplication/${id}`, { method: "DELETE" });
+      await fetch(`${BACKEND_URL}/api/jobapplication/${id}`, { method: "DELETE" });
       setApplications(applications.filter((app) => app._id !== id));
     } catch (err) {
       console.error(err);
-      alert("Failed to delete");
+      alert("Failed to delete job application");
     }
   };
 

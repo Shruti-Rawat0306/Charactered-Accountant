@@ -4,19 +4,23 @@ function ResourcesPage() {
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // ✅ Replace this with your deployed backend URL
+  const BACKEND_URL = "https://charactered-accountant-backend.onrender.com";
+
   useEffect(() => {
     fetchResources();
   }, []);
 
   const fetchResources = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/resource/all");
+      const res = await fetch(`${BACKEND_URL}/api/resource/all`);
       const data = await res.json();
       setResources(data);
       setLoading(false);
     } catch (err) {
       console.error(err);
       setLoading(false);
+      alert("Failed to fetch resources from backend");
     }
   };
 
@@ -24,7 +28,7 @@ function ResourcesPage() {
     if (!window.confirm("Are you sure you want to delete this resource?")) return;
 
     try {
-      await fetch(`http://localhost:5000/api/resource/${id}`, { method: "DELETE" });
+      await fetch(`${BACKEND_URL}/api/resource/${id}`, { method: "DELETE" });
       setResources(resources.filter((r) => r._id !== id));
     } catch (err) {
       console.error(err);

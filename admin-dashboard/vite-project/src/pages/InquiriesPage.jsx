@@ -4,19 +4,23 @@ function InquiriesPage() {
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // ✅ Replace with your deployed backend URL
+  const BACKEND_URL = "https://charactered-accountant-backend.onrender.com";
+
   useEffect(() => {
     fetchInquiries();
   }, []);
 
   const fetchInquiries = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/inquiries/all");
+      const res = await fetch(`${BACKEND_URL}/api/inquiries/all`);
       const data = await res.json();
       setInquiries(data);
       setLoading(false);
     } catch (err) {
       console.error(err);
       setLoading(false);
+      alert("Failed to fetch inquiries from backend");
     }
   };
 
@@ -24,11 +28,11 @@ function InquiriesPage() {
     if (!window.confirm("Are you sure you want to delete this inquiry?")) return;
 
     try {
-      await fetch(`http://localhost:5000/api/inquiries/${id}`, { method: "DELETE" });
+      await fetch(`${BACKEND_URL}/api/inquiries/${id}`, { method: "DELETE" });
       setInquiries(inquiries.filter((inq) => inq._id !== id));
     } catch (err) {
       console.error(err);
-      alert("Failed to delete");
+      alert("Failed to delete inquiry");
     }
   };
 
